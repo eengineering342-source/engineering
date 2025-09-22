@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الهندسة المتكاملة - المنصة الشاملة للخدمات الهندسية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --gray: #7f8c8d;
+            --whatsapp: #25D366;
+            --power: #9b59b6;
+            --solar: #f1c40f;
+            --cyber: #34495e;
+            --plc: #16a085;
+            --design: #8e44ad;
+            --safety: #e67e22;
+            --management: #2980b9;
+            --math: #4CAF50;
+            --physics: #34495e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 28px;
+            color: var(--accent);
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button {
+            background-color: var(--whatsapp);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+        
+        /* Hero Section - هندسة عامة */
+        .hero {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        /* Specialties Section - خلفية هندسية */
+        .specialties {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .specialty-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .specialty-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .power-card .card-header {
+            background: linear-gradient(135deg, var(--power) 0%, #8e44ad 100%);
+        }
+        
+        .solar-card .card-header {
+            background: linear-gradient(135deg, var(--solar) 0%, #f39c12 100%);
+        }
+        
+        .cyber-card .card-header {
+            background: linear-gradient(135deg, var(--cyber) 0%, #2c3e50 100%);
+        }
+        
+        .plc-card .card-header {
+            background: linear-gradient(135deg, var(--plc) 0%, #1abc9c 100%);
+        }
+        
+        .design-card .card-header {
+            background: linear-gradient(135deg, var(--design) 0%, #6c3483 100%);
+        }
+        
+        .safety-card .card-header {
+            background: linear-gradient(135deg, var(--safety) 0%, #d35400 100%);
+        }
+        
+        .management-card .card-header {
+            background: linear-gradient(135deg, var(--management) 0%, #2471a3 100%);
+        }
+
+        .math-card .card-header {
+            background: linear-gradient(135deg, var(--math) 0%, #388E3C 100%);
+        }
+
+        .physics-card .card-header {
+            background: linear-gradient(135deg, var(--physics) 0%, #2c3e50 100%);
+        }
+        
+        .card-header {
+            padding: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        /* زر واتساب في أعلى اليسار */
+        .whatsapp-corner-card {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            z-index: 2;
+        }
+        
+        .whatsapp-small {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            color: var(--whatsapp);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            font-size: 20px;
+        }
+        
+        .whatsapp-small:hover {
+            background-color: var(--whatsapp);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        
+        .specialty-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: #eee;
+        }
+        
+        .card-body ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .card-body li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card-body li i {
+            color: var(--secondary);
+        }
+        
+        .card-footer {
+            padding: 15px 20px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        /* How It Works Section - خلفية أنظمة وتحكم */
+        .how-it-works {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .step {
+            text-align: center;
+            max-width: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .step.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+        
+        /* Services Showcase - خلفية طاقة */
+        .services-showcase {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .services-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .service-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .service-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .service-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .service-item i {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        /* Engineering Showcase Section */
+        .engineering-showcase {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .engineering-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .engineering-image {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #eee;
+            height: 400px;
+            object-fit: cover;
+        }
+        
+        .image-caption {
+            text-align: center;
+            margin-top: 10px;
+            color: var(--gray);
+            font-style: italic;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* زر واتساب دائري في الطرف */
+        .whatsapp-corner {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            z-index: 1000;
+        }
+        
+        .whatsapp-circle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--whatsapp);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        
+        .whatsapp-circle:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+        
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp-tooltip::after {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent var(--dark) transparent transparent;
+        }
+        
+        .whatsapp-circle:hover + .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            right: 75px;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+                gap: 15px;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--primary);
+                transition: all 0.4s ease;
+                padding: 80px 20px 20px;
+                z-index: 999;
+            }
+            
+            nav.active {
+                right: 0;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hamburger {
+                display: flex;
+                z-index: 1000;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .whatsapp-corner {
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .whatsapp-circle {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+            
+            .whatsapp-button {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            
+            .whatsapp-tooltip {
+                display: none;
+            }
+            
+            .whatsapp-small {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            .whatsapp-corner-card {
+                top: 10px;
+                left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-cogs"></i>
+                <h1>الهندسة المتكاملة</h1>
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">التخصصات</a></li>
+                    <li><a href="#">كيف تعمل</a></li>
+                    <li><a href="#">الأسعار</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <a href="https://wa.me/966123456789" class="whatsapp-button" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                تواصل معنا
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>المنصة الشاملة للخدمات الهندسية للطلاب والمهندسين</h2>
+            <p>احصل على حلول لواجباتك، مشاريعك، واستشارات هندسية متخصصة من خبراء معتمدين في مجالات الهندسة المختلفة</p>
+        </div>
+    </section>
+
+    <section class="specialties">
+        <div class="container">
+            <div class="section-title">
+                <h2>تخصصاتنا الأكاديمية</h2>
+            </div>
+            
+            <div class="specialties-grid">
+                <div class="specialty-card power-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة هندسة القوى الكهربائية" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>هندسة القوى الكهربائية</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="powersystem.jpg" alt="هندسة القوى الكهربائية" class="specialty-image">
+                        <p>خدمات متخصصة في هندسة القوى والأنظمة الكهربائية</p>
+                        <ul>
+                            <li><i class="fas fa-bolt"></i> حلول واجبات وأنظمة القدرة</li>
+                            <li><i class="fas fa-plug"></i> تصميم دوائر وتحليل أنظمة</li>
+                            <li><i class="fas fa-charging-station"></i> مشاريع محطات توليد ونقل</li>
+                            <li><i class="fas fa-book"></i> تقارير وأبحاث متخصصة</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="specialty-card solar-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة هندسة الطاقة الشمسية" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>هندسة الطاقة الشمسية</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="solar.jpeg" alt="هندسة الطاقة الشمسية" class="specialty-image">
+                        <p>حلول متكاملة لأنظمة الطاقة الشمسية والمتجددة</p>
+                        <ul>
+                            <li><i class="fas fa-solar-panel"></i> تصميم أنظمة شمسية</li>
+                            <li><i class="fas fa-sun"></i> تحليل جدوى مشاريع طاقة متجددة</li>
+                            <li><i class="fas fa-car-battery"></i> أنظمة تخزين الطاقة</li>
+                            <li><i class="fas fa-calculator"></i> حسابات كفاءة وأداء الأنظمة</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="specialty-card cyber-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة الأمن السيبراني" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>الأمن السيبراني</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="Untitled.jpg" alt="الأمن السيبراني" class="specialty-image">
+                        <p>حلول واستشارات في أمن المعلومات والشبكات</p>
+                        <ul>
+                            <li><i class="fas fa-shield-alt"></i> تأمين الشبكات والأنظمة</li>
+                            <li><i class="fas fa-lock"></i> اختبار الاختراق والتقييم</li>
+                            <li><i class="fas fa-code"></i> برمجة أنظمة الحماية</li>
+                            <li><i class="fas fa-bug"></i> كشف الثغرات وتحليلها</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="specialty-card plc-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة التحكم الآلي والـ PLC" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>التحكم الآلي والـ PLC</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="plc.jpg" alt="التحكم الآلي والـ PLC" class="specialty-image">
+                        <p>برمجة وتصميم أنظمة التحكم الآلي والمنطقي</p>
+                        <ul>
+                            <li><i class="fas fa-cogs"></i> برمجة متحكمات PLC</li>
+                            <li><i class="fas fa-project-diagram"></i> تصميم أنظمة سكادا HMI/SCADA</li>
+                            <li><i class="fas fa-sliders-h"></i> تحسين أنظمة التحكم</li>
+                            <li><i class="fas fa-tachometer-alt"></i> محاكاة الأنظمة الصناعية</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="specialty-card design-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة التصميمات الكهربائية" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>التصميمات الكهربائية</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="electrical.jpg" alt="التصميمات الكهربائية" class="specialty-image">
+                        <p>تصميم المخططات والأنظمة الكهربائية المتكاملة</p>
+                        <ul>
+                            <li><i class="fas fa-drafting-compass"></i> رسم مخططات بالقوى والإنارة</li>
+                            <li><i class="fas fa-bolt"></i> تصميم أنظمة التيار الخفيف</li>
+                            <li><i class="fas fa-file-contract"></i> إعداد لوحات الكشف والكميات</li>
+                            <li><i class="fas fa-check-circle"></i> مراجعة التصميمات</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="specialty-card safety-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة السلامة والصحة المهنية" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>السلامة والصحة المهنية</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="safety.jpg" alt="السلامة والصحة المهنية" class="specialty-image">
+                        <p>خطط وتقارير السلامة والصحة المهنية للمشاريع</p>
+                        <ul>
+                            <li><i class="fas fa-hard-hat"></i> إعداد خطط السلامة</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> تقييم المخاطر</li>
+                            <li><i class="fas fa-file-alt"></i> إعداد ملفات المشاريع</li>
+                            <li><i class="fas fa-clipboard-check"></i> إجراءات LOTO</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="specialty-card management-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة إدارة المشاريع الهندسية" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>إدارة المشاريع الهندسية</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="project mangment.jpg" alt="إدارة المشاريع الهندسية" class="specialty-image">
+                        <p>إدارة وتخطيط المشاريع الهندسية بكفاءة واحترافية</p>
+                        <ul>
+                            <li><i class="fas fa-tasks"></i> إعداد جدولة المشاريع</li>
+                            <li><i class="fas fa-chart-line"></i> دراسات الجدوى الاقتصادية</li>
+                            <li><i class="fas fa-file-contract"></i> إعداد وثائق المشروع</li>
+                            <li><i class="fas fa-analytics"></i> تحليل مسار المشروع الحرج</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="specialty-card math-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة الرياضيات" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>الرياضيات</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="math.jpg" alt="الرياضيات" class="specialty-image">
+                        <p>حلول متكاملة للمشاكل الرياضية الأكاديمية</p>
+                        <ul>
+                            <li><i class="fas fa-calculator"></i> حل الواجبات الرياضية</li>
+                            <li><i class="fas fa-chart-pie"></i> مشاريع الأبحاث الرياضية</li>
+                            <li><i class="fas fa-clipboard-list"></i>  استشارات في الإحصاء والجبروالتفاضل والتكامل</li>
+                            <li><i class="fas fa-code"></i> برمجة الحلول العددية</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="specialty-card physics-card">
+                    <div class="card-header">
+                        <div class="whatsapp-corner-card">
+                            <a href="https://wa.me/966123456789?text=أرغب في خدمة الفيزياء" class="whatsapp-small" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                        <h3>الفيزياء</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="physics.jpg" alt="الفيزياء" class="specialty-image">
+                        <p>مساعدة في فهم وتطبيق المفاهيم الفيزيائية</p>
+                        <ul>
+                            <li><i class="fas fa-atom"></i> حل واجبات الفيزياء النظرية</li>
+                            <li><i class="fas fa-flask"></i> مساعدة في التجارب المعملية</li>
+                            <li><i class="fas fa-lightbulb"></i> مشاريع وأبحاث فيزياء</li>
+                            <li><i class="fas fa-microscope"></i> مفاهيم فيزياء الكم</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>كيف تعمل المنصة</h2>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <h3>تواصل معنا عبر واتساب</h3>
+                    <p>ارسل رسالة على الواتساب توضح طلبك ومتطلباتك</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>نحدد السعر والموعد</h3>
+                    <p>نتفق على السعر والوقت اللازم لإنهاء طلبك</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>ننفذ طلبك</h3>
+                    <p>يقوم خبراؤنا بتنفيذ طلبك بأعلى معايير الجودة</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>استلم عملك</h3>
+                    <p>نرسل لك العمل جاهزًا مع شرح مفصل إذا لزم الأمر</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-showcase">
+        <div class="container services-container">
+            <div class="section-title">
+                <h2>خدماتنا المتخصصة</h2>
+            </div>
+            
+            <p>نقدم مجموعة متكاملة من الخدمات الأكاديمية لتلبية جميع احتياجاتك الدراسية</p>
+            
+            <div class="services-grid">
+                <div class="service-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>حل الواجبات والمشاريع</h3>
+                    <p>نقدم حلولاً متكاملة للواجبات والمشاريع بجودة عالية</p>
+                </div>
+                
+                <div class="service-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>مشاريع التخرج</h3>
+                    <p>تصميم وتنفيذ مشاريع التخرج بكافة متطلباتها وتفاصيلها</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <a href="https://wa.me/966123456789" class="btn btn-whatsapp" style="padding: 15px 30px; font-size: 18px;" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    ابدأ مشروعك الآن
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="engineering-showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2>مشاريعنا الهندسية</h2>
+            </div>
+            
+            <div class="engineering-content">
+                <p>نفخر بتنفيذ العديد من المشاريع الهندسية المتكاملة التي تخدم قطاعات متنوعة من الصناعة والتعليم. هنا مثال على أحد مشاريعنا في تصميم أنظمة الطاقة الشمسية:</p>
+                
+                <img src="SOLAR.jpg" alt="مشروع هندسي لأنظمة الطاقة الشمسية" class="engineering-image">
+                <p class="image-caption">تصميم وتنفيذ نظام طاقة شمسية متكامل بقدرة 5 ميجاوات</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن الهندسة المتكاملة</h3>
+                    <p>منصة عربية رائدة تقدم خدمات هندسية متخصصة للطلاب والمهنيين في مختلف التخصصات الهندسية.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#">الرئيسية</a></li>
+                        <li><a href="#">التخصصات</a></li>
+                        <li><a href="#">كيف تعمل</a></li>
+                        <li><a href="#">الأسعار</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>التخصصات</h3>
+                    <ul>
+                        <li><a href="#">هندسة القوى</a></li>
+                        <li><a href="#">الطاقة الشمسية</a></li>
+                        <li><a href="#">الأمن السيبراني</a></li>
+                        <li><a href="#">التحكم الآلي</a></li>
+                        <li><a href="#">التصميمات الكهربائية</a></li>
+                        <li><a href="#">السلامة والصحة المهنية</a></li>
+                        <li><a href="#">إدارة المشاريع</a></li>
+                        <li><a href="#">الرياضيات</a></li>
+                        <li><a href="#">الفيزياء</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i> +966 12 345 6789</li>
+                        <li><i class="fas fa-envelope"></i> info@integrated-eng.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 الهندسة المتكاملة</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="whatsapp-corner">
+        <a href="https://wa.me/966123456789" class="whatsapp-circle" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <div class="whatsapp-tooltip">تواصل معنا عبر واتساب</div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('منصة الهندسة المتكاملة جاهزة للعمل!');
+            
+            // قائمة الهامبرجر للجوال
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            
+            hamburger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+            
+            // إغلاق القائمة عند النقر على رابط
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                });
+            });
+            
+            // تأثيرات الظهور عند التمرير
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+            
+            // مراقبة العناصر لإضافة تأثيرات الظهور
+            document.querySelectorAll('.specialty-card, .step, .service-item').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // إضافة تأثير التمرير السلس للروابط
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
